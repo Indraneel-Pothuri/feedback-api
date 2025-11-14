@@ -1,7 +1,7 @@
 flask==2.2.5
 gunicorn==21.2.0
 SQLAlchemy==2.0.20
-psycopg2-binary==2.9.7
+pg8000==1.29.8
 pandas==2.1.2
 textblob==0.17.1
 requests==2.31.0
