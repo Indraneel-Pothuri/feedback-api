@@ -17,7 +17,11 @@ OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")  # optional
 if not DATABASE_URL:
     raise RuntimeError("Please set DATABASE_URL environment variable")
 
-engine = create_engine(DATABASE_URL, connect_args={"sslmode":"require"} if "postgres" in DATABASE_URL else {})
+engine = create_engine(
+    DATABASE_URL.replace("postgres://", "postgresql+pg8000://"),
+    connect_args={"sslmode": "require"}
+)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
